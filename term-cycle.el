@@ -3,11 +3,8 @@
 ;; Copyright (C) 2014 Adam Patterson
 
 ;; Author: Adam Patterson <adam@adamrt.com>
-;; Maintainer: Adam Patterson <adam@adamrt.com>
 ;; URL: http://github.com/adamrt/term-cycle
-;; Created: 2014-10-18
 ;; Version: 0.1
-;; Keywords: term, multi, ansi-term
 ;; Package-Requires: ((emacs "24.1"))
 
 ;;; Commentary:
