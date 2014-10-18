@@ -26,7 +26,6 @@
 
 (defcustom term-cycle-initial-create t
   "Creates a term if one doesn't exist."
-
   :type 'boolean
   :group 'term-cycle)
 
@@ -38,14 +37,17 @@
 (defcustom term-cycle-cycle-on-kill t
   "Cycle to another term when one is killed.
 Depends on term-cycle-kill-on-exit."
-
   :type 'boolean
   :group 'term-cycle)
 
 (defcustom term-cycle-shell-command "/bin/bash"
   "Specify which shell to use."
-
   :type 'string
+  :group 'term-cycle)
+
+(defcustom term-cycle-disable-underline-face t
+  "Remove underline face."
+  :type 'boolean
   :group 'term-cycle)
 
 (defun term-mode-buffers-exist-p ()
@@ -90,6 +92,12 @@ Optionally cycle to next term buffer."
         (kill-buffer)
         (if term-cycle-cycle-on-kill
             (term-cycle-next)))))
+
+(defun disable-underline-face ()
+  (custom-set-faces '(term-underline ((t nil)))))
+
+(if term-cycle-disable-underline-face
+    (disable-underline-face))
 
 (provide 'term-cycle)
 
