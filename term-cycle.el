@@ -80,9 +80,10 @@ Depends on term-cycle-kill-on-exit."
 Optionally cycle to next term buffer."
 
   (if term-cycle-kill-on-exit
-      (kill-buffer)
-    (if term-cycle-cycle-on-kill
-        (term-cycle-next))))
+      (progn
+        (kill-buffer)
+        (if term-cycle-cycle-on-kill
+            (term-cycle-next)))))
 
 (provide 'term-cycle)
 
