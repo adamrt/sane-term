@@ -30,7 +30,6 @@
   :type 'boolean
   :group 'term-cycle)
 
-
 (defcustom term-cycle-kill-on-exit t
   "Kill term buffer on exit (C-d or `exit`)."
   :type 'boolean
@@ -45,28 +44,27 @@ Depends on term-cycle-kill-on-exit."
 
 (defun term-mode-buffers-exist-p ()
   "Boolean if term-mode buffers exist."
-  (dolist (buf (buffer-list))
-    (with-current-buffer buf
-      (if (string= "term-mode" major-mode)
-          (return t)))))
-
+  (catch 'loop
+    (dolist (buf (buffer-list))
+      (with-current-buffer buf
+        (if (string= "term-mode" major-mode)
+            (throw 'loop t))))))
 
 (defun term-cycle-next ()
   "Cycle through term buffers."
   (interactive)
   (if (string= "term-mode" major-mode)
       (bury-buffer))
-  (dolist (buf (buffer-list))
-    (when (with-current-buffer buf (string= "term-mode" major-mode))
-      (switch-to-buffer buf)
-      (return t))))
-
+  (catch 'loop
+    (dolist (buf (buffer-list))
+      (when (with-current-buffer buf (string= "term-mode" major-mode))
+        (switch-to-buffer buf)
+        (throw 'loop nil)))))
 
 (defun term-cycle-create ()
   "Create new term buffer."
   (interactive)
   (ansi-term "/bin/bash"))
-
 
 (defun term-cycle ()
   "Cycle through term buffers, creating if necessary."
@@ -75,7 +73,6 @@ Depends on term-cycle-kill-on-exit."
       (unless (term-mode-buffers-exist-p)
         (term-cycle-create)))
   (term-cycle-next))
-
 
 (defadvice term-handle-exit
     (after term-kill-buffer-on-exit activate)
