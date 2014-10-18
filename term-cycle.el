@@ -16,10 +16,9 @@
 
 ;;     (require 'term-cycle)
 ;;     (global-set-key (kbd "C-x t") 'term-cycle)
-;;     (global-set-key (kbd "C-x T") ')
+;;     (global-set-key (kbd "C-x T") 'term-cycle-create)
 
 ;;; Code:
-
 
 (defconst term-cycle-version "0.1"
   "Currently running version of term-cycle.")
