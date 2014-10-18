@@ -3,7 +3,7 @@
 Cycle through terms.
 
 Multi Term changed too many settings and broke my workflow. All I need is some
-sane defaults and ability to cylce through terminals and create new ones.
+sane defaults and ability to cycle through terminals and create new ones.
 
 __Setup__
 
