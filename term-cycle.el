@@ -42,6 +42,12 @@ Depends on term-cycle-kill-on-exit."
   :type 'boolean
   :group 'term-cycle)
 
+(defcustom term-cycle-shell-command "/bin/bash"
+  "Specify which shell to use."
+
+  :type 'string
+  :group 'term-cycle)
+
 (defun term-mode-buffers-exist-p ()
   "Boolean if term-mode buffers exist."
   (catch 'loop
@@ -64,7 +70,7 @@ Depends on term-cycle-kill-on-exit."
 (defun term-cycle-create ()
   "Create new term buffer."
   (interactive)
-  (ansi-term "/bin/bash"))
+  (ansi-term term-cycle-shell-command))
 
 (defun term-cycle ()
   "Cycle through term buffers, creating if necessary."

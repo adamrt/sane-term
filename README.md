@@ -15,6 +15,8 @@ __Setup__
 
 __Variables__
 
+`term-cycle-shell-command` - defaults to "/bin/bash". shell to use for term-cycle
+
 `term-cycle-initial-create` - defaults to true. `term-cycle` will create first term if none exist.
 
 `term-cycle-kill-on-exit` - defaults to true. C-d or `exit` will kill the term buffer.
