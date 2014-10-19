@@ -17,9 +17,6 @@
 
 ;;; Code:
 
-(defconst sane-term-version "0.1"
-  "Currently running version of sane-term.")
-
 (defgroup sane-term nil
   "Multi Term is crazy. This is not."
   :group 'term)
