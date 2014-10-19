@@ -45,11 +45,6 @@ Depends on sane-term-kill-on-exit."
   :type 'boolean
   :group 'sane-term)
 
-(defcustom sane-term-no-underline t
-  "Remove underline face."
-  :type 'boolean
-  :group 'sane-term)
-
 (defun term-mode-buffers-exist-p ()
   "Boolean if term-mode buffers exist."
   (catch 'loop
@@ -93,11 +88,6 @@ Optionally go to next term buffer."
         (if sane-term-next-on-kill
             (sane-term-next)))))
 
-(defun disable-underline ()
-  (custom-set-faces '(term-underline ((t nil)))))
-
-(if sane-term-no-underline
-    (disable-underline))
 
 (provide 'sane-term)
 
