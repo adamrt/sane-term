@@ -50,17 +50,17 @@ Depends on sane-term-kill-on-exit."
   (catch 'loop
     (dolist (buf (buffer-list))
       (with-current-buffer buf
-        (if (string= "term-mode" major-mode)
-            (throw 'loop t))))))
+        (when (derived-mode-p 'term-mode)
+          (throw 'loop t))))))
 
 (defun sane-term-next ()
   "Cycle through term buffers."
   (interactive)
-  (if (string= "term-mode" major-mode)
-      (bury-buffer))
+  (when (derived-mode-p 'term-mode)
+    (bury-buffer))
   (catch 'loop
     (dolist (buf (buffer-list))
-      (when (with-current-buffer buf (string= "term-mode" major-mode))
+      (when (with-current-buffer buf (derived-mode-p 'term-mode))
         (switch-to-buffer buf)
         (throw 'loop nil)))))
 
