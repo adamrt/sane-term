@@ -61,11 +61,13 @@ Depends on sane-term-kill-on-exit."
         (switch-to-buffer buf)
         (throw 'loop nil)))))
 
+;;;###autoload
 (defun sane-term-create ()
   "Create new term buffer."
   (interactive)
   (ansi-term sane-term-shell-command))
 
+;;;###autoload
 (defun sane-term ()
   "Cycle through term buffers, creating if necessary."
   (interactive)
