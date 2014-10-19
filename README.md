@@ -1,24 +1,23 @@
-## Term Cycle
+## Sane Term
 
-Cycle through terms.
-
-Multi Term changed too many settings and broke my workflow. All I need is some
-sane defaults and ability to cycle through terminals and create new ones.
+Ansi Term with sane options and the ability to cycle/create terms.
 
 __Setup__
 
 ```
-(require 'term-cycle)
-(global-set-key (kbd "C-x t") 'term-cycle)
-(global-set-key (kbd "C-x T") 'term-cycle-create)
+(require 'sane-term)
+(global-set-key (kbd "C-x t") 'sane-term)
+(global-set-key (kbd "C-x T") 'sane-term-create)
 ```
 
 __Variables__
 
-`term-cycle-shell-command` - defaults to "/bin/bash". shell to use for term-cycle
+`sane-term-shell-command` - defaults to "/bin/bash". shell to use for sane-term.
 
-`term-cycle-initial-create` - defaults to true. `term-cycle` will create first term if none exist.
+`sane-term-initial-create` - defaults to true. `sane-term` will create first term if none exist.
 
-`term-cycle-kill-on-exit` - defaults to true. C-d or `exit` will kill the term buffer.
+`sane-term-kill-on-exit` - defaults to true. C-d or `exit` will kill the term buffer.
 
-`term-cycle-cycle-on-kill` - defaults to true. After killing a term buffer, cycle to another.
+`sane-term-next-on-kill` - defaults to true. After killing a term buffer, cycle to another.
+
+`sane-term-no-underline` - defaults to true. Remove underline face in the term.
