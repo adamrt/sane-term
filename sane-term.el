@@ -69,21 +69,19 @@ Depends on sane-term-kill-on-exit."
 (defun sane-term ()
   "Cycle through term buffers, creating if necessary."
   (interactive)
-  (if sane-term-initial-create
-      (unless (sane-term-mode-buffers-exist-p)
-        (sane-term-create)))
+  (when sane-term-initial-create
+    (unless (sane-term-mode-buffers-exist-p)
+      (sane-term-create)))
   (sane-term-next))
 
 (defadvice term-handle-exit
     (after term-kill-buffer-on-exit activate)
   "Kill term buffers on exiting term (C-d or `exit`).
 Optionally go to next term buffer."
-
-  (if sane-term-kill-on-exit
-      (progn
-        (kill-buffer)
-        (if sane-term-next-on-kill
-            (sane-term-next)))))
+  (when sane-term-kill-on-exit
+    (kill-buffer)
+    (when sane-term-next-on-kill
+      (sane-term-next))))
 
 
 (provide 'sane-term)
