@@ -17,9 +17,6 @@
 
 ;;; Code:
 
-(defconst sane-term-version "0.1"
-  "Currently running version of sane-term.")
-
 (defgroup sane-term nil
   "Multi Term is crazy. This is not."
   :group 'term)
@@ -45,27 +42,22 @@ Depends on sane-term-kill-on-exit."
   :type 'boolean
   :group 'sane-term)
 
-(defcustom sane-term-no-underline t
-  "Remove underline face."
-  :type 'boolean
-  :group 'sane-term)
-
-(defun term-mode-buffers-exist-p ()
+(defun sane-term-mode-buffers-exist-p ()
   "Boolean if term-mode buffers exist."
   (catch 'loop
     (dolist (buf (buffer-list))
       (with-current-buffer buf
-        (if (string= "term-mode" major-mode)
-            (throw 'loop t))))))
+        (when (derived-mode-p 'term-mode)
+          (throw 'loop t))))))
 
 (defun sane-term-next ()
   "Cycle through term buffers."
   (interactive)
-  (if (string= "term-mode" major-mode)
-      (bury-buffer))
+  (when (derived-mode-p 'term-mode)
+    (bury-buffer))
   (catch 'loop
     (dolist (buf (buffer-list))
-      (when (with-current-buffer buf (string= "term-mode" major-mode))
+      (when (with-current-buffer buf (derived-mode-p 'term-mode))
         (switch-to-buffer buf)
         (throw 'loop nil)))))
 
@@ -77,27 +69,20 @@ Depends on sane-term-kill-on-exit."
 (defun sane-term ()
   "Cycle through term buffers, creating if necessary."
   (interactive)
-  (if sane-term-initial-create
-      (unless (term-mode-buffers-exist-p)
-        (sane-term-create)))
+  (when sane-term-initial-create
+    (unless (sane-term-mode-buffers-exist-p)
+      (sane-term-create)))
   (sane-term-next))
 
 (defadvice term-handle-exit
     (after term-kill-buffer-on-exit activate)
   "Kill term buffers on exiting term (C-d or `exit`).
 Optionally go to next term buffer."
+  (when sane-term-kill-on-exit
+    (kill-buffer)
+    (when sane-term-next-on-kill
+      (sane-term-next))))
 
-  (if sane-term-kill-on-exit
-      (progn
-        (kill-buffer)
-        (if sane-term-next-on-kill
-            (sane-term-next)))))
-
-(defun disable-underline ()
-  (custom-set-faces '(term-underline ((t nil)))))
-
-(if sane-term-no-underline
-    (disable-underline))
 
 (provide 'sane-term)
 
