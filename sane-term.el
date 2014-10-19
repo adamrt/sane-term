@@ -42,7 +42,7 @@ Depends on sane-term-kill-on-exit."
   :type 'boolean
   :group 'sane-term)
 
-(defun sane-term-mode-buffers-exist-p ()
+(defun sane-term-buffer-exists-p ()
   "Boolean if term-mode buffers exist."
   (catch 'loop
     (dolist (buf (buffer-list))
@@ -70,7 +70,7 @@ Depends on sane-term-kill-on-exit."
   "Cycle through term buffers, creating if necessary."
   (interactive)
   (when sane-term-initial-create
-    (unless (sane-term-mode-buffers-exist-p)
+    (unless (sane-term-buffer-exists-p)
       (sane-term-create)))
   (sane-term-next))
 
