@@ -21,4 +21,3 @@ __Variables__
 * `sane-term-initial-create` [`t`] - `sane-term` will create first term if none exist.
 * `sane-term-kill-on-exit` [`t`] - C-d or `exit` will kill the term buffer.
 * `sane-term-next-on-kill` [`t`] - After killing a term buffer, cycle to another.
-* `sane-term-no-underline` [`t`] - Remove underline face in the term.
