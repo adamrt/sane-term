@@ -24,10 +24,9 @@ __Variables__
 
 __Common Issues__
 
-When you start a term you may find your environment variables are not set. This is the proper, yet unexpected behavior. You can read about it here https://github.com/adamrt/sane-term/issues/6 but gist is that your ~/.profile is not being read. Non-login shells read from `~/.bashrc` instead. You can do the following to fix it.
+When you start a term you may find your environment variables are not set. This is the proper, yet unexpected behavior. You can read about it here https://github.com/adamrt/sane-term/issues/6 but the gist is that your `~/.profile` is not being read. Non-login shells read from `~/.bashrc` instead. Put the following in your `~/.bashrc` (create it if necessary).
 
 ```
-# ~/.bashrc
 source /etc/profile
 source ~/.profile
 ```
