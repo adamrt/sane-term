@@ -52,7 +52,6 @@ Depends on sane-term-kill-on-exit."
 
 (defun sane-term-next ()
   "Cycle through term buffers."
-  (interactive)
   (when (derived-mode-p 'term-mode)
     (bury-buffer))
   (catch 'loop
