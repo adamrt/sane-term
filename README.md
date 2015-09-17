@@ -17,7 +17,7 @@ __Setup__
 
 __Variables__
 
-* `sane-term-shell-command` [`"/bin/bash"`] - shell to use for sane-term.
+* `sane-term-shell-command` [`$SHELL or "/bin/sh"`] - shell to use for sane-term.
 * `sane-term-initial-create` [`t`] - `sane-term` will create first term if none exist.
 * `sane-term-kill-on-exit` [`t`] - C-d or `exit` will kill the term buffer.
 * `sane-term-next-on-kill` [`t`] - After killing a term buffer, cycle to another.

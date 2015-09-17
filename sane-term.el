@@ -21,7 +21,8 @@
   "Multi Term is crazy. This is not."
   :group 'term)
 
-(defcustom sane-term-shell-command "/bin/bash"
+(defcustom sane-term-shell-command (or (getenv "SHELL")
+                                       "/bin/sh")
   "Specify which shell to use."
   :type 'string
   :group 'sane-term)
