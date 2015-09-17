@@ -1,10 +1,10 @@
 ;;; sane-term.el --- Multi Term is crazy. This is not.
 
-;; Copyright (C) 2014 Adam Patterson
+;; Copyright (C) 2015 Adam Patterson
 
 ;; Author: Adam Patterson <adam@adamrt.com>
 ;; URL: http://github.com/adamrt/sane-term
-;; Version: 0.2
+;; Version: 0.3
 ;; Package-Requires: ((emacs "24.1"))
 
 ;;; Commentary:
