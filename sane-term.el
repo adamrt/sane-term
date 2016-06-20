@@ -51,15 +51,28 @@ Depends on sane-term-kill-on-exit."
         (when (derived-mode-p 'term-mode)
           (throw 'loop t))))))
 
+(defun sane-term--next-1 (reverse)
+  (unless reverse
+    (when (derived-mode-p 'term-mode)
+      (bury-buffer)))
+  (let ((buffers (buffer-list)))
+    (when reverse
+      (setq buffers (nreverse buffers)))
+    (catch 'loop
+      (dolist (buf buffers)
+        (when (with-current-buffer buf (derived-mode-p 'term-mode))
+          (switch-to-buffer buf)
+          (throw 'loop nil))))))
+
+(defun sane-term-prev ()
+  "Cycle through term buffers, in reverse."
+  (interactive)
+  (sane-term--next-1 t))
+
 (defun sane-term-next ()
   "Cycle through term buffers."
-  (when (derived-mode-p 'term-mode)
-    (bury-buffer))
-  (catch 'loop
-    (dolist (buf (buffer-list))
-      (when (with-current-buffer buf (derived-mode-p 'term-mode))
-        (switch-to-buffer buf)
-        (throw 'loop nil)))))
+  (interactive)
+  (sane-term--next-1 nil))
 
 ;;;###autoload
 (defun sane-term-create ()
