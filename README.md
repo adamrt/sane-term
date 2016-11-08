@@ -9,13 +9,18 @@ __Overview__
 
 __Setup__
 
-```
+```emacs
+;; Enable sane term
 (require 'sane-term)
 (global-set-key (kbd "C-x t") 'sane-term)
 (global-set-key (kbd "C-x T") 'sane-term-create)
+
+
+;; Optional convenience binding. This allows C-y to paste even when in term-char-mode (see below). 
+(add-hook 'term-mode-hook (lambda() (define-key term-raw-map (kbd "C-y") (lambda () (interactive) (term-line-mode) (yank) (term-char-mode)))))
 ```
 
-When in a sane-term buffer you can use `C-c C-j` to switch to line mode, which you can then treat like a normal emacs buffer (move, yank, etc). `C-c C-k` will return you to char mode, which will act like a traditional ansi-term.
+When in a sane-term buffer you can use `C-c C-j` to switch to term-line-mode, which you can then treat like a normal emacs buffer (move, yank, etc). `C-c C-k` will return you to term-char-mode, which will act like a traditional ansi-term.
 
 __Variables__
 
