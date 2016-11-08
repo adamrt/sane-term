@@ -1,6 +1,6 @@
 ### Sane Term
 
-Ansi Term with sane options and the ability to cycle/create terms.
+sane-term is ansi-term with sane options and the ability to cycle/create terms.
 
 __Overview__
 
@@ -14,6 +14,8 @@ __Setup__
 (global-set-key (kbd "C-x t") 'sane-term)
 (global-set-key (kbd "C-x T") 'sane-term-create)
 ```
+
+When in a sane-term buffer you can use `C-c C-j` to switch to line mode, which you can then treat like a normal emacs buffer (move, yank, etc). `C-c C-k` will return you to char mode, which will act like a traditional ansi-term.
 
 __Variables__
 
