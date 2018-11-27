@@ -4,7 +4,7 @@
 
 ;; Author: Adam Patterson <adam@adamrt.com>
 ;; URL: http://github.com/adamrt/sane-term
-;; Version: 0.4
+;; Version: 0.5
 ;; Package-Requires: ((emacs "24.1"))
 
 ;;; Commentary:
@@ -88,6 +88,16 @@ Depends on sane-term-kill-on-exit."
     (unless (sane-term-buffer-exists-p)
       (sane-term-create)))
   (sane-term-next))
+
+;;;###autoload
+(defun sane-term-mode-toggle ()
+  "Toggles term between line mode and char mode. Nice to have a
+   single key so I don't have to remember separate char and line
+   mode bindings"
+  (interactive)
+  (if (term-in-line-mode)
+      (term-char-mode)
+    (term-line-mode)))
 
 (defadvice term-handle-exit
     (after term-kill-buffer-on-exit activate)
