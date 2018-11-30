@@ -12,19 +12,10 @@ __Setup__
 ```emacs
 (use-package sane-term
   :ensure t
-  :init
-  (progn
-    (add-hook 'term-mode-hook (lambda () (setq-local global-hl-line-mode nil))))
   :bind (
     ("C-x t" . sane-term)
-    ("C-x T" . sane-term-create)
-    ("C-c C-j" . sane-term-mode-toggle)))
-
-;; Optional convenience binding. This allows C-y to paste even when in term-char-mode (see below).
-(add-hook 'term-mode-hook (lambda() (define-key term-raw-map (kbd "C-y") (lambda () (interactive) (term-line-mode) (yank) (term-char-mode)))))
+    ("C-x T" . sane-term-create))
 ```
-
-When in a sane-term buffer you can use `C-c C-j` to switch to between term-line-mode, which you can then treat like a normal emacs buffer (move, yank, etc). Press it again to return to term-char-mode.
 
 __Variables__
 

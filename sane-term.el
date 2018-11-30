@@ -1,19 +1,20 @@
 ;;; sane-term.el --- Multi Term is crazy. This is not.
 
-;; Copyright (C) 2015 Adam Patterson
+;; Copyright (C) 2018 Adam Patterson
 
 ;; Author: Adam Patterson <adam@adamrt.com>
 ;; URL: http://github.com/adamrt/sane-term
-;; Version: 0.5
+;; Version: 0.6
 ;; Package-Requires: ((emacs "24.1"))
 
 ;;; Commentary:
 
 ;; You can set it up like this:
 
-;;     (require 'sane-term)
-;;     (global-set-key (kbd "C-x t") 'sane-term)
-;;     (global-set-key (kbd "C-x T") 'sane-term-create)
+;;    (use-package sane-term
+;;      :ensure t
+;;      :bind (("C-x t" . sane-term)
+;;             ("C-x T" . sane-term-create)))
 
 ;;; Code:
 
@@ -89,7 +90,6 @@ Depends on sane-term-kill-on-exit."
       (sane-term-create)))
   (sane-term-next))
 
-;;;###autoload
 (defun sane-term-mode-toggle ()
   "Toggles term between line mode and char mode. Nice to have a
    single key so I don't have to remember separate char and line
