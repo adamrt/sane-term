@@ -14,7 +14,7 @@ __Setup__
   :ensure t
   :bind (
     ("C-x t" . sane-term)
-    ("C-x T" . sane-term-create))
+    ("C-x T" . sane-term-create)))
 ```
 
 __Variables__
