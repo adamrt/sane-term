@@ -1,4 +1,9 @@
-### Sane Term
+### Notice
+This project is no longer maintained. I've switched to `vterm` and
+`multi-vterm` which provide the same functionality as `ansi-term` and
+this package, respectively.
+
+# Sane Term
 
 sane-term is ansi-term with sane options and the ability to cycle/create terms.
 
